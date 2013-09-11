@@ -1,20 +1,27 @@
 <!-- Topic: Version control w/ Git  -->
 
-<h1>Git</h1>
+#Git - A developer perspective
 
 --SLIDE--
 Agenda
--------
-- Version control stories
+------
+- Version control fundmental
 - Git 101
 - Setup Git
-  - Install Git
-  - Configure Git
 - Version control in the Git way
   - Git development patterns
   - Common workflows
-- Git learning material
+- Git reference material
 - Q & A
+
+
+--SLIDE--
+Version control fundmental
+--------------------------
+- Tracking history
+- Diverge and converge
+- Collabration
+  - Multiple developers work on same task
 
 --SLIDE--
 Git 101
@@ -29,38 +36,31 @@ Git 101
   - Powerful branch and merge
 
 --SUBSLIDE--
-Git objects model
+Gang of four
 --------------------
-- workspace, stage, repository and stash
-- object store
-  - SHA-1 code
-  - blob
-  - tree
-  - commit
+- workspace
+- stage (aka index)
+- repository
+  - local vs remote
+  - bare vs development
+- stash
+TODO: insert image to illustrate relationship of the four
 
 --SUBSLIDE--
 Git objects
 --------------------
+- content addressable object
 - SHA-1 code
 - blob
 - tree
 - commit
-
-![Git objects](/images/git_objects.png)
-
---SUBSLIDE--
-Git concepts
--------------
-- refs
-- repository
-  - content addressable object
-  - local repository
-  - remote repository
-  - bare repository
-  - development repository
-- submodule
 - branch
 - tag
+TODO: add note to demo the so-called content addressable object
+git hash-object -w <file>
+git cat-file -p <sha-1>
+
+![Git objects](/images/git_objects.png)
 
 --SUBSLIDE--
 Git concepts(cont)
@@ -96,8 +96,8 @@ Setup Git
   - IDEs (Eclipse, Xcode, Visual Studio[2])
 - Configure Git
 
-[1]: http://www.infoq.com/news/2013/01/vs2012_git "Visual Studio Gets Git"
-[2]: http://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git "Google code Git Windows Binary download page"
+[1]: http://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git "Google code Git Windows Binary download page"
+[2]: http://www.infoq.com/news/2013/01/vs2012_git "Visual Studio Gets Git"
 
 --SUBSLIDE--
 Configure Git
@@ -113,6 +113,8 @@ Configure Git
   - line ending (see [dealing with line endings][1])
     -input for Unix/MacOS X/Linux, auto for Windows
   - command aliases
+- bash completion and prompt
+TODO: add more details on how to setup bash completion and prompt
 
 [1]: https://help.github.com/articles/dealing-with-line-endings "dealing with line endings"
 
@@ -145,6 +147,10 @@ Version control in the Git way
 - Enterprise development using Git
   - Branching scheme
   - Common workflows
+- Unique Git features
+  - rebase
+  - undo changes
+
 
 --SLIDE--
 Enterprise development using Git
@@ -163,9 +169,12 @@ TODO: insert picture here
 
 --SUBSLIDE--
 Setup Git repository
-------------------------------------------------
+--------------------
 - Initialize empty repository on central server
-- Set up initial repoistory locally
+  - Use Github like web console
+  - Use gitolite
+  - git init --bare
+- Set up initial repository locally
   - mkdir proj1 && cd proj1
   - git init
   - add project content, ignore, attribute file etc
@@ -188,6 +197,18 @@ Develop new feature
 - commit changes (git commit -m "your comment message")
 - merge feature to project branch
 - git push origin <proj_branch>
+
+
+--SLIDE--
+Unique Git features
+-------------------
+- rebase
+- undo changes
+  - undo changes in workspace (git checkout -- <file>)
+  - undo changes in stage (git reset HEAD -- <file>)
+  - undo last commit (git reset --hard HEAD^)
+  - fix last commit (git commit --amend)
+  - offset previous commit (git revert <sha-1 of previous commit>)
 
 
 --SLIDE--
