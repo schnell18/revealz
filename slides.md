@@ -44,6 +44,7 @@ Gang of four
   - local vs remote
   - bare vs development
 - stash
+![git cmd FSM](/images/git_cmd_state_machine.png)
 TODO: insert image to illustrate relationship of the four
 
 --SUBSLIDE--
