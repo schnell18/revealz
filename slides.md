@@ -1,27 +1,47 @@
-<!-- Topic: Version control w/ Git  -->
+<!--
+title: Git - A developer perspective
+author: Justin Zhang
+-->
 
-#Git - A developer perspective
+##Git - A developer perspective
+
+<aside class="notes">
+State purpose of this kicks
+Share some personal Git experience, promote Git usage for both work and private
+Share Yesmobile story on VCS softwares eval
+Senior SE bias of CVS
+Visual source safe vs CVS
+Zip keeping blunder
+Department manager preference on PVCS
+</aside> 
 
 --SLIDE--
 Agenda
 ------
-- Version control fundmental
+- What is version control
 - Git 101
-- Setup Git
-- Version control in the Git way
-  - Git development patterns
-  - Common workflows
-- Git reference material
+- Git workflows
+- Git in action
+- How to dig into Git
 - Q & A
 
 
 --SLIDE--
-Version control fundmental
---------------------------
-- Tracking history
+What is version control
+-----------------------
+- Control the right content
+- Track changes
 - Diverge and converge
 - Collabration
-  - Multiple developers work on same task
+
+<aside class="notes">
+**Source** code is the key component to control, do not keep derivates.
+Take example of maintenance of old version, auditing to illustrate track changes.
+Take example of release and dev activity to illustrate diverge and converge.
+Take example of global team to illustrate collabration challenge such as timezone
+and how git resolve it.
+</aside> 
+
 
 --SLIDE--
 Git 101
@@ -44,99 +64,64 @@ Gang of four
   - local vs remote
   - bare vs development
 - stash
+
+--SUBSLIDE--
 ![git cmd FSM](/images/git_cmd_state_machine.png)
-TODO: insert image to illustrate relationship of the four
+
+<aside class="notes">
+illustrate workspace/index/repository/stash and common git operations by following the diagram
+</aside>
+
+--SUBSLIDE--
+> If you deny the index, you really deny git itself.
+> --Linus Torvalds February 4, 2006, Git List Archives
+<aside class="notes">
+stress the importance of understanding index, a lot of git command depends on index
+</aside>
+
+--SUBSLIDE--
+Quick quiz
+----------
+<p class="gitkicks">Wally appends statment</p>
+
+    printf("Job well done!\n");
+
+<p class="gitkicks">to the end of program main.c and stage it into index, then he think it is worth mentioning the promotion, so he add another line:</p>
+
+    printf("Consider double the salary!\n");
+
+<p class="gitkicks"> to end. If Wally commits right now, what will be the last line in the repository?</p>
+
+-----------
+- A. printf("Job well done!\n");
+- B. printf("Consider double the salary!\n");
+- C. the same as before
+
+<aside class="notes">
+ Make a quick demo, depending on the response of audience.
+</aside>
 
 --SUBSLIDE--
 Git objects
 --------------------
 - content addressable object
 - SHA-1 code
-- blob
-- tree
-- commit
-- branch
-- tag
-TODO: add note to demo the so-called content addressable object
+- Git object types
+  - blob
+  - tree
+  - commit
+  - branch
+  - tag
+
+<aside class="notes">
+demo content addressable object and sha-1
 git hash-object -w <file>
 git cat-file -p <sha-1>
+</aside>
 
+--SUBSLIDE--
 ![Git objects](/images/git_objects.png)
 
---SUBSLIDE--
-Git concepts(cont)
--------------
-- clone
-- init
-- stage
-- commit
-- checkout
-- branch
-- merge
-  - fast-forward merge
-  - three-way merge
-  - recursive merge
-  - octpus merge
-  - ours merge
-  - subtree merge
-- rebase
-- push
-- fetch
-- pull
-
- 
---SLIDE--
-Setup Git
----------
-- Install offical Git
-  - install from source
-  - install from binary (.deb, .rpm, ports, msysgit[1])
-- Third party Git clients
-  - Github
-  - TortoiseGit
-  - IDEs (Eclipse, Xcode, Visual Studio[2])
-- Configure Git
-
-[1]: http://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git "Google code Git Windows Binary download page"
-[2]: http://www.infoq.com/news/2013/01/vs2012_git "Visual Studio Gets Git"
-
---SUBSLIDE--
-Configure Git
--------------
-- git config
-- Scope
-  - system (/etc/gitconfig)
-  - global ($HOME/.gitconfig)
-  - project ($GITDIR/config)
-- Important items
-  - user name (user.name)
-  - email (user.email)
-  - line ending (see [dealing with line endings][1])
-    -input for Unix/MacOS X/Linux, auto for Windows
-  - command aliases
-- bash completion and prompt
-TODO: add more details on how to setup bash completion and prompt
-
-[1]: https://help.github.com/articles/dealing-with-line-endings "dealing with line endings"
-
---SUBSLIDE--
-Sample Git configure
--------------
-    git config --global user.name "Justin Zhang"
-    git config --global user.email "fgz@qad.com"
-    git config --global core.editor vim
-    git config --global core.autocrlf true
-    git config --global color.ui true
-    git config --global merge.tool vimdiff
-    git config --global push.default simple
-    git config --global alias.co checkout
-    git config --global alias.br branch
-    git config --global alias.ci commit
-    git config --global alias.st status
-    git config --global alias.dfs "diff --staged"
-    git config --global alias.logg "log --graph --decorate --oneline --abbrev-commit --all"
-    git config --global alias.unstage 'reset HEAD --'
-    git config --global alias.last 'log -1 HEAD'
 
 --SLIDE--
 Version control in the Git way
@@ -156,7 +141,7 @@ Version control in the Git way
 --SLIDE--
 Enterprise development using Git
 --------------------------------
-- Branching schem
+- Branching scheme
 - Centralized similar to Subversion
 - Typical workflows
   - Setup Git repository
@@ -199,6 +184,18 @@ Develop new feature
 - merge feature to project branch
 - git push origin <proj_branch>
 
+--SUBSLIDE--
+Make patch/hotfix
+-----------------
+- create patch/hotfix branch
+- make and stage local changes
+  - add new file (git add <new_file>)
+  - modify existing file (git add <file>)
+  - delete file (git rm <file>)
+- test
+- commit changes (git commit -m "your comment message")
+- git push origin <patch_branch>
+
 
 --SLIDE--
 Unique Git features
@@ -211,21 +208,146 @@ Unique Git features
   - fix last commit (git commit --amend)
   - offset previous commit (git revert <sha-1 of previous commit>)
 
+<aside class="notes">
+Draw commit history tree on white board to illustrate rebase
+</aside>
+
 
 --SLIDE--
-Git reference material
-----------------------
+Git in action
+-------------
+- setup git
+  - install git
+  - configure git
+- manage your project with Git
+
+
+--SLIDE--
+Setup Git
+---------
+- Install offical Git
+  - install from source
+  - install from binary (.deb, .rpm, ports, msysgit[1])
+- Third party Git clients
+  - Github
+  - TortoiseGit
+  - IDEs (Eclipse, Xcode, Visual Studio[2])
+- Configure Git
+
+<aside class="notes">
+Recommend use command line git for beginner so that he can understand Git better.
+</aside>
+
+[1]: http://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git "Google code Git Windows Binary download page"
+[2]: http://www.infoq.com/news/2013/01/vs2012_git "Visual Studio Gets Git"
+
+--SUBSLIDE--
+Configure Git
+-------------
+- git config
+- Scope
+  - system (/etc/gitconfig)
+  - global ($HOME/.gitconfig)
+  - project ($GITDIR/config)
+- Important items
+  - user name (user.name)
+  - email (user.email)
+  - line ending (see [dealing with line endings][1])
+    -input for Unix/MacOS X/Linux, auto for Windows
+  - command aliases
+- bash completion and prompt
+
+[1]: https://help.github.com/articles/dealing-with-line-endings "dealing with line endings"
+
+--SUBSLIDE--
+Sample Git configure
+--------------------
+    git config --global user.name "Justin Zhang"
+    git config --global user.email "fgz@qad.com"
+    git config --global core.editor vim
+    git config --global core.autocrlf true
+    git config --global color.ui true
+    git config --global merge.tool vimdiff
+    git config --global push.default simple
+    git config --global alias.co checkout
+    git config --global alias.br branch
+    git config --global alias.ci commit
+    git config --global alias.st status
+    git config --global alias.dfs "diff --staged"
+    git config --global alias.logg "log --graph --decorate --oneline --abbrev-commit --all"
+    git config --global alias.unstage 'reset HEAD --'
+    git config --global alias.last 'log -1 HEAD'
+
+--SUBSLIDE--
+bash completion & prompt
+------------------------
+- bash completion
+  - tab to complete the git command
+  - get [bash completion][1] from github
+  - copy git-completion.bash into /etc/bash_completion.d
+  - MacOS X user: install homebrew
+- bash prompt
+  - show branch and merge status on command line prompt
+  - get [bash prompt][2] from github
+  - copy git-prompt.sh as .git-prompt.sh into your home directory
+  - add following lines into your .bash_profile
+
+
+        if [ -f ~/.git-prompt.sh ]; then
+            source ~/.git-prompt.sh
+            export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+        fi  
+ 
+[1]: https://github.com/git/git/blob/master/contrib/completion/git-completion.bash "bash completion"
+[2]: https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+
+<aside class="notes">
+Demo the git completion and git prompt
+</aside>
+
+
+--SUBSLIDE--
+Develop with Git example
+------------------------
+- Determine git server option
+  - git hosting service ([GitHub][1], [Bitbucket][2])
+  - internal git server (gitolite)
+- Develop, maintain project
+  - setup project
+  - program-test-commit-publish loop
+  - accept patches
+
+[1]: http://github.com "GitHub"
+[2]: http://bitbucket.com "Atlassian Bitbucket"
+
+<aside class="notes">
+Demo push archive-probe to bitbucket to showcase the setup process
+Demo change dotvim README to use markdown to showcase general development
+</aside>
+
+
+--SLIDE--
+How do I study Git effectively
+------------------------------
 - books:
   - *Pro Git* [1]
   - *Version Control with Git 2nd* [2]
 - Online video:
   - *Git for Ages 4 and Up* [3]
   - *Vimcast fugitive series* [4]
+- Start your own project on GitHub[5] **NOW**
 
 [1]: http://git-scm.com/book "Pro Git"
 [2]: http://shop.oreilly.com/product/0636920022862.do?green=62C71D50-BC4E-5575-BDAB-B7F3ECD001BC&intcmp=af-mybuy-0636920022862.IP "Version Control with Git 2nd"
 [3]: http://www.youtube.com/watch?v=1ffBJ4sVUb4 "Git for Ages 4 and Up - Youtoube"
 [4]: http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/ "Fugitive.vim - a complement to command line git"
+[5]: http://github.org "GitHub"
+
+<aside class="notes">
+Encourage attendee to register github and start his own dotvim project.
+And state the best to way learn Git is to put it into pratical use.
+</aside>
+
 
 --SLIDE--
 ![Octocat Network](/images/ask_octocat.png)
