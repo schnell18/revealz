@@ -6,13 +6,7 @@ author: Justin Zhang
 ##Git - A developer perspective
 
 <aside class="notes">
-State purpose of this kicks
-Share some personal Git experience, promote Git usage for both work and private
-Share Yesmobile story on VCS softwares eval
-Senior SE bias of CVS
-Visual source safe vs CVS
-Zip keeping blunder
-Department manager preference on PVCS
+State purpose of this kicks: share some personal Git experience, promote Git usage for both work and private. Kick off w/ Yesmobile story on VCS softwares eval: ClearCase, Visual Source Safe, CVS, Senior SE bias of CVS, Department manager preference on PVCS, zip keeping blunder.
 </aside> 
 
 --SLIDE--
@@ -24,6 +18,10 @@ Agenda
 - Git in action
 - How to dig into Git
 - Q & A
+
+<aside class="notes">
+State the overall content of this presentation: concept, demo and quiz
+/aside> 
 
 
 --SLIDE--
@@ -57,7 +55,7 @@ Git 101
 
 --SUBSLIDE--
 Gang of four
---------------------
+------------
 - workspace
 - stage (aka index)
 - repository
@@ -66,10 +64,25 @@ Gang of four
 - stash
 
 --SUBSLIDE--
+File status in Git
+------------------
+- new
+- modified
+- staged
+- committed
+- ignored
+- untracked
+
+<aside class="notes">
+demo the file status
+</aside>
+
+--SUBSLIDE--
 ![git cmd FSM](/images/git_cmd_state_machine.png)
 
 <aside class="notes">
 illustrate workspace/index/repository/stash and common git operations by following the diagram
+index: stage or cache, a set of changeset prepared for commit; not in SVN
 </aside>
 
 --SUBSLIDE--
@@ -122,6 +135,22 @@ git cat-file -p <sha-1>
 --SUBSLIDE--
 ![Git objects](/images/git_objects.png)
 
+--SUBSLIDE--
+Unique Git features
+-------------------
+- rebase
+- porcelain and plumbing commands
+- modify commit history
+  - undo changes in workspace (git checkout -- <file>)
+  - undo changes in stage (git reset HEAD -- <file>)
+  - undo last commit (git reset --hard HEAD^)
+  - fix last commit (git commit --amend)
+  - offset previous commit (git revert <sha-1 of previous commit>)
+
+<aside class="notes">
+Draw commit history tree on white board to illustrate rebase
+</aside>
+
 
 --SLIDE--
 Version control in the Git way
@@ -129,10 +158,7 @@ Version control in the Git way
 - Git development patterns
 - Enterprise development using Git
   - Branching scheme
-  - Common workflows
-- Unique Git features
-  - rebase
-  - undo changes
+- Common workflows
 
 --SLIDE--
 Common Git development patterns
@@ -163,6 +189,15 @@ Enterprise development using Git
 
 --SUBSLIDE--
 ![RnD branching scheme](/images/rnd_branching_scheme.png)
+
+
+--SLIDE--
+Common workflows
+----------------
+- Setup Git repository
+- Develop new feature
+- Make patch/hotfix
+- Integrate pull request
 
 --SUBSLIDE--
 Setup Git repository
@@ -206,22 +241,6 @@ Make patch/hotfix
 - test
 - commit changes (git commit -m "your comment message")
 - git push origin <patch_branch>
-
-
---SLIDE--
-Unique Git features
--------------------
-- rebase
-- undo changes
-  - undo changes in workspace (git checkout -- <file>)
-  - undo changes in stage (git reset HEAD -- <file>)
-  - undo last commit (git reset --hard HEAD^)
-  - fix last commit (git commit --amend)
-  - offset previous commit (git revert <sha-1 of previous commit>)
-
-<aside class="notes">
-Draw commit history tree on white board to illustrate rebase
-</aside>
 
 
 --SLIDE--
