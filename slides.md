@@ -149,9 +149,7 @@ Enterprise development using Git
   - Make patch/hotfix
 
 --SUBSLIDE--
-Branching scheme
-----------------
-TODO: insert picture here
+![RnD branching scheme](/images/rnd_branching_scheme.png)
 
 --SUBSLIDE--
 Setup Git repository
