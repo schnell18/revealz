@@ -127,15 +127,28 @@ git cat-file -p <sha-1>
 Version control in the Git way
 ------------------------------
 - Git development patterns
-  - Central repository pattern
-  - Integration manger pattern
-  - Dictator-lieutenants pattern
 - Enterprise development using Git
   - Branching scheme
   - Common workflows
 - Unique Git features
   - rebase
   - undo changes
+
+--SLIDE--
+Common Git development patterns
+-------------------------------
+- Central repository pattern
+- Integration manger pattern
+- Dictator-lieutenants pattern
+
+--SUBSLIDE--
+![Central repository pattern](/images/central_pattern.png)
+
+--SUBSLIDE--
+![Integration manager pattern](/images/integration_manager_pattern.png)
+
+--SUBSLIDE--
+![Dictator-lieutenants pattern](/images/dictator_lieutenants_pattern.png)
 
 
 --SLIDE--
