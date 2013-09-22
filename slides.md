@@ -350,33 +350,46 @@ Develop with Git example
 [1]: http://github.com "GitHub"
 [2]: http://bitbucket.com "Atlassian Bitbucket"
 
+--SLIDE--
+Demo time ...
+-------------
 <aside class="notes">
-Demo push archive-probe to bitbucket to showcase the setup process
-Demo change dotvim README to use markdown to showcase general development
+Demo git_kicks project: init, add initial source, commit, push to remote, modify
+Demo files status, stage process as quiz
 </aside>
 
 
 --SLIDE--
-How do I study Git effectively
-------------------------------
-- books:
-  - *Pro Git* [1]
-  - *Version Control with Git 2nd* [2]
-- Online video:
-  - *Git for Ages 4 and Up* [3]
-  - *Vimcast fugitive series* [4]
-- Start your own project on GitHub[5] **NOW**
+So how do I study Git effectively?
+----------------------------------
+
+--SUBSLIDE--
+books
+-----
+- *Pro Git* [1]
+- *Version Control with Git 2nd* [2]
 
 [1]: http://git-scm.com/book "Pro Git"
 [2]: http://shop.oreilly.com/product/0636920022862.do?green=62C71D50-BC4E-5575-BDAB-B7F3ECD001BC&intcmp=af-mybuy-0636920022862.IP "Version Control with Git 2nd"
-[3]: http://www.youtube.com/watch?v=1ffBJ4sVUb4 "Git for Ages 4 and Up - Youtoube"
-[4]: http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/ "Fugitive.vim - a complement to command line git"
-[5]: http://github.org "GitHub"
 
-<aside class="notes">
-Encourage attendee to register github and start his own dotvim project.
-And state the best to way learn Git is to put it into pratical use.
-</aside>
+--SUBSLIDE--
+Online video
+------------
+- *Git for Ages 4 and Up* [1]
+- *Vimcast fugitive series* [2]
+
+[1]: http://www.youtube.com/watch?v=1ffBJ4sVUb4 "Git for Ages 4 and Up - Youtoube"
+[2]: http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/ "Fugitive.vim - a complement to command line git"
+--SUBSLIDE--
+> And start your own project on GitHub[1] **NOW**
+
+[1]: http://github.org "GitHub"
+
+--SUBSLIDE--
+One more thing ...
+
+--SUBSLIDE--
+![RTFM](/images/rtfm.png)
 
 
 --SLIDE--
