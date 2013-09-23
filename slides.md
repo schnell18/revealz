@@ -1,5 +1,6 @@
 <!--
 title: Git - A developer perspective
+
 author: Justin Zhang
 -->
 
@@ -21,7 +22,7 @@ Agenda
 
 <aside class="notes">
 State the overall content of this presentation: concept, demo and quiz
-/aside> 
+</aside> 
 
 
 --SLIDE--
@@ -249,7 +250,8 @@ Git in action
 - setup git
   - install git
   - configure git
-- manage your project with Git
+- Manage your project with Git
+- The archive utility demo project
 
 
 --SLIDE--
@@ -257,11 +259,11 @@ Setup Git
 ---------
 - Install offical Git
   - install from source
-  - install from binary (.deb, .rpm, ports, msysgit[1])
+  - install from binary (.deb, .rpm, ports, [msysgit][1])
 - Third party Git clients
   - Github
   - TortoiseGit
-  - IDEs (Eclipse, Xcode, Visual Studio[2])
+  - IDEs (Eclipse, Xcode, [Visual Studio][2])
 - Configure Git
 
 <aside class="notes">
@@ -337,8 +339,8 @@ Demo the git completion and git prompt
 
 
 --SUBSLIDE--
-Develop with Git example
-------------------------
+Manage your project with Git
+----------------------------
 - Determine git server option
   - git hosting service ([GitHub][1], [Bitbucket][2])
   - internal git server (gitolite)
@@ -351,12 +353,53 @@ Develop with Git example
 [2]: http://bitbucket.com "Atlassian Bitbucket"
 
 --SLIDE--
-Demo time ...
--------------
+The archive utility project
+---------------------------
+The Dilbert team decides to move the archive utility to Git and host it on both internal server and bigbucket. Alice does the initial setup. The utility works fine on Windows and Linux. However, as Dogbert discovers, it fails a few unit tests on MacOS X. Alice feels obliged to fix this bug as she forgot to run the tests in the first place. At the same time, the pointy-haired boss wants the utility to work w/ common Java archives such as jar, war and ear. Dilbert is delighted to see this as he had anticipated such needs long time ago. He also hates the dumb-looking readme file and demands it be reformatted into fancier looking markdown. Asok volunteers to take this task. PHB is happy to see everyone be proactive and decides to make a new release when they are done.
+
 <aside class="notes">
-Demo git_kicks project: init, add initial source, commit, push to remote, modify
-Demo files status, stage process as quiz
+Demo goals:
+1. be intuitive and easy to follow
+2. real example
+3. collaborative
 </aside>
+
+--SUBSLIDE--
+Alice sets up the proejct
+-------------------------
+
+--SUBSLIDE--
+Alice fixes defect failing UT
+-----------------------------
+<aside class="notes">
+The reason why unit tests failed on MacOS X is that the unzip command does not handle meta char very well. The p7zip utility '7za' is more capable. So Alice decides to put a note in the readme to favor the use of p7zip over standard zip.
+</aside>
+
+
+--SUBSLIDE--
+Dilbert adds Java archive support
+---------------------------------
+> No single stroke of keyboard should be made without Vim.
+> --Dilbert, Confession of a Vim Addict
+<aside class="notes">
+Demo how fugitive makes git easier in Vim
+</aside>
+
+--SUBSLIDE--
+Asok reformats readme
+---------------------
+
+--SUBSLIDE--
+Time to integrate
+-----------------
+<aside class="notes">
+Alice changes readme to mention some MacOS X stuff which conflicts w/
+changes made by Asok 
+</aside>
+
+--SUBSLIDE--
+Time to release
+-----------------
 
 
 --SLIDE--
@@ -366,8 +409,8 @@ So how do I study Git effectively?
 --SUBSLIDE--
 books
 -----
-- *Pro Git* [1]
-- *Version Control with Git 2nd* [2]
+- [*Pro Git*][1]
+- [*Version Control with Git 2nd*][2]
 
 [1]: http://git-scm.com/book "Pro Git"
 [2]: http://shop.oreilly.com/product/0636920022862.do?green=62C71D50-BC4E-5575-BDAB-B7F3ECD001BC&intcmp=af-mybuy-0636920022862.IP "Version Control with Git 2nd"
@@ -375,13 +418,13 @@ books
 --SUBSLIDE--
 Online video
 ------------
-- *Git for Ages 4 and Up* [1]
-- *Vimcast fugitive series* [2]
+- [*Git for Ages 4 and Up*][1]
+- [*Vimcast fugitive series*][2]
 
 [1]: http://www.youtube.com/watch?v=1ffBJ4sVUb4 "Git for Ages 4 and Up - Youtoube"
 [2]: http://vimcasts.org/episodes/fugitive-vim---a-complement-to-command-line-git/ "Fugitive.vim - a complement to command line git"
 --SUBSLIDE--
-> And start your own project on GitHub[1] **NOW**
+> And start your own project on [GitHub][1] **NOW**
 
 [1]: http://github.org "GitHub"
 
