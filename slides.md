@@ -317,21 +317,13 @@ bash completion & prompt
   - tab to complete the git command
   - get [bash completion][1] from github
   - copy git-completion.bash into /etc/bash_completion.d
-  - MacOS X user: install homebrew
+  - MacOS X user: brew install git bash-completion
 - bash prompt
   - show branch and merge status on command line prompt
   - get [bash prompt][2] from github
-  - copy git-prompt.sh as .git-prompt.sh into your home directory
-  - add following lines into your .bash_profile
 
-
-        if [ -f ~/.git-prompt.sh ]; then
-            source ~/.git-prompt.sh
-            export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
-        fi  
- 
-[1]: https://github.com/git/git/blob/master/contrib/completion/git-completion.bash "bash completion"
-[2]: https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+[1]: https://github.com/magicmonty/bash-git-prompt "bash completion"
+[2]: https://github.com/bobthecow/git-flow-completion/wiki/Install-Bash-git-completion
 
 <aside class="notes">
 Demo the git completion and git prompt
